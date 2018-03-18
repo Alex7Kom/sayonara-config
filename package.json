@@ -1,0 +1,23 @@
+{
+  "name": "@alex7kom/sayonara-config",
+  "version": "0.1.0",
+  "description": "Zero config tools",
+  "main": "index.js",
+  "bin": {
+    "sayonara-config": "src/run.js"
+  },
+  "scripts": {
+    "lint": "node src/run lint-node",
+    "pretty": "node src/run pretty"
+  },
+  "keywords": [],
+  "author": "Alexey Komarov <alex7kom@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "glob": "^7.1.2",
+    "prettier": "^1.11.1"
+  }
+}
