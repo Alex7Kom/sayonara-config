@@ -8,7 +8,8 @@
   },
   "scripts": {
     "lint": "node src/run lint-node",
-    "pretty": "node src/run pretty"
+    "pretty": "node src/run pretty",
+    "precommit": "node src/run pretty --staged"
   },
   "keywords": [],
   "author": "Alexey Komarov <alex7kom@gmail.com>",
@@ -22,5 +23,8 @@
   },
   "eslintConfig": {
     "extends": "./src/configs/eslint-node.js"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3"
   }
 }
