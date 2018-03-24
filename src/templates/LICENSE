@@ -1,41 +1,6 @@
-# Sayonara, config
-
-> A zero-config toolkit for JavaScript projects.
-
-Currently this toolkit includes:
-
-* Project initialization
-* Linting via ESLint
-* Auto formatting via Prettier
-
-## Installation
-
-Install it globally:
-
-```
-npm install -g @alex7kom/sayonara-config
-```
-
-Then run in the project directory:
-
-```
-sayonara-config init-node
-```
-
-It will install all the needed dependencies and project boilerplate.
-
-## Usage
-
-Commands exposed via NPM scripts:
-
-* `lint` - lint *.js files in `/src` directory
-* `pretty` - pretty *.js files in `/src`
-
-## License
-
 The MIT License (MIT)
 
-Copyright (c) 2018-present Alexey Komarov <alex7kom@gmail.com>
+Copyright (c) %year%-present %author%
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
