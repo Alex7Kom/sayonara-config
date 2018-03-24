@@ -4,6 +4,7 @@ const prettierConfig = require('./prettier');
 
 module.exports = {
   env: {
+    es6: true,
     node: true
   },
   parserOptions: {
