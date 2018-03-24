@@ -1,6 +1,6 @@
 {
   "name": "@alex7kom/sayonara-config",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Zero config tools",
   "main": "index.js",
   "bin": {
