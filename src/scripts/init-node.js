@@ -134,10 +134,7 @@ function addReadmeFile(packageInfo) {
     fs.readFileSync(readmePath);
   } catch (e) {
     let template = fs.readFileSync(templatePath, 'utf8');
-    template = template
-      .replace('%name%', packageInfo.name)
-      .replace('%description%', packageInfo.description)
-      .replace('%license%', packageInfo.license);
+    template = template.replace(/%(\w+)%/g, (m, p1) => packageInfo[p1]);
 
     fs.writeFileSync(readmePath, template);
   }

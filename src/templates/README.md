@@ -4,8 +4,14 @@
 
 ## Installation
 
+```
+npm install %name%
+```
+
 ## Usage
+
+## API
 
 ## License
 
-%license%
+%license% © %author%
