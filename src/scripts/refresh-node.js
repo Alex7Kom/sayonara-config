@@ -9,6 +9,8 @@ function refresh() {
   updateConfigFile('gitignore');
 
   updateConfigFile('editorconfig');
+
+  updateConfigFile('npmignore');
 }
 
 function updateConfigFile(name) {
