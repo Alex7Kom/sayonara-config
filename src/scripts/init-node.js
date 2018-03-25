@@ -16,47 +16,43 @@ const npmScriptCommands = {
 };
 
 function init() {
-  let packageInfo;
-
-  try {
-    packageInfo = readPackageInfo();
-  } catch (e) {
-    packageInfo = require('../templates/package.json');
-    writePackageInfo(packageInfo);
-    npmInit();
-
+  if (npmInit()) {
     return init();
   }
 
-  checkIfMe(packageInfo);
+  checkIfMe();
 
   createDir('src');
 
-  installMe(packageInfo);
+  installMe();
 
   gitInit();
 
-  installHusky(packageInfo);
+  installHusky();
 
-  addEslintConfig(packageInfo);
+  addEslintConfig();
 
-  addScripts(packageInfo);
+  addScripts();
 
-  addLicenseFile(packageInfo);
+  addLicenseFile();
 
-  addReadmeFile(packageInfo);
+  addReadmeFile();
 
   console.log('The project successfully initialized!');
 }
 
-function checkIfMe(packageInfo) {
+function checkIfMe() {
+  const packageInfo = readPackageInfo();
+
   if (packageInfo.name === ownInfo.name) {
     console.error('The init script cannot be run within its own repo.');
     process.exit(1);
   }
 }
 
-function addEslintConfig(packageInfo) {
+function addEslintConfig() {
+  const packageInfo = readPackageInfo();
+
   if (packageInfo.eslintConfig) {
     return;
   }
@@ -73,7 +69,9 @@ function addEslintConfig(packageInfo) {
   writePackageInfo(packageInfo);
 }
 
-function addScripts(packageInfo) {
+function addScripts() {
+  const packageInfo = readPackageInfo();
+
   if (!packageInfo.scripts) {
     packageInfo.scripts = {};
   }
@@ -87,7 +85,9 @@ function addScripts(packageInfo) {
   writePackageInfo(packageInfo);
 }
 
-function installMe(packageInfo) {
+function installMe() {
+  const packageInfo = readPackageInfo();
+
   if (
     packageInfo.devDependencies &&
     packageInfo.devDependencies[ownInfo.name]
@@ -98,7 +98,9 @@ function installMe(packageInfo) {
   runNpm('install', '--save-dev', '--save-exact', ownInfo.name);
 }
 
-function installHusky(packageInfo) {
+function installHusky() {
+  const packageInfo = readPackageInfo();
+
   if (packageInfo.devDependencies && packageInfo.devDependencies.husky) {
     return;
   }
@@ -107,7 +109,14 @@ function installHusky(packageInfo) {
 }
 
 function npmInit() {
-  runNpm('init');
+  try {
+    readPackageInfo();
+  } catch (e) {
+    writePackageInfo(require('../templates/package.json'));
+    runNpm('init');
+
+    return true;
+  }
 }
 
 function runNpm(...args) {
@@ -126,7 +135,9 @@ function createDir(dir) {
   }
 }
 
-function addReadmeFile(packageInfo) {
+function addReadmeFile() {
+  const packageInfo = readPackageInfo();
+
   const readmePath = path.join(process.cwd(), 'README.md');
   const templatePath = path.join(__dirname, '../templates', 'README.md');
 
@@ -140,7 +151,9 @@ function addReadmeFile(packageInfo) {
   }
 }
 
-function addLicenseFile(packageInfo) {
+function addLicenseFile() {
+  const packageInfo = readPackageInfo();
+
   if (packageInfo.license !== 'MIT') {
     return;
   }
