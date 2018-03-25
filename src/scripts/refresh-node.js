@@ -6,14 +6,14 @@ const path = require('path');
 const delimeter = '\n## DO NOT EDIT ABOVE THIS LINE ##\n';
 
 function refresh() {
-  updateGitIgnore();
+  updateConfigFile('gitignore');
 
-  writeEditorConfig();
+  updateConfigFile('editorconfig');
 }
 
-function updateGitIgnore() {
-  const filePath = '.gitignore';
-  const templatePath = path.join(__dirname, '../templates', 'gitignore');
+function updateConfigFile(name) {
+  const filePath = '.' + name;
+  const templatePath = path.join(__dirname, '../templates', name);
 
   const template = fs.readFileSync(templatePath, 'utf8');
   let file;
@@ -33,14 +33,6 @@ function updateGitIgnore() {
   }
 
   fs.writeFileSync(filePath, parts.join(delimeter));
-}
-
-function writeEditorConfig() {
-  const filePath = '.editorconfig';
-  const templatePath = path.join(__dirname, '../templates', 'editorconfig');
-
-  const template = fs.readFileSync(templatePath, 'utf8');
-  fs.writeFileSync(filePath, template);
 }
 
 refresh();
