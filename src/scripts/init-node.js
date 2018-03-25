@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const childProcess = require('child_process');
 
+const useNPMLock = process.argv[3] === '--use-npm-lock';
+
 const ownInfo = require(path.join(__dirname, '../..', 'package.json'));
 const packageInfoPath = path.join(process.cwd(), 'package.json');
 
@@ -21,6 +23,8 @@ function init() {
   }
 
   checkIfMe();
+
+  addNPMConfig();
 
   createDir('src');
 
@@ -148,6 +152,22 @@ function addReadmeFile() {
     template = template.replace(/%(\w+)%/g, (m, p1) => packageInfo[p1]);
 
     fs.writeFileSync(readmePath, template);
+  }
+}
+
+function addNPMConfig() {
+  if (useNPMLock) {
+    return;
+  }
+
+  const rcFile = '.npmrc';
+  const templatePath = path.join(__dirname, '../templates', 'npmrc');
+
+  try {
+    fs.readFileSync(rcFile);
+  } catch (e) {
+    const template = fs.readFileSync(templatePath, 'utf8');
+    fs.writeFileSync(rcFile, template);
   }
 }
 
