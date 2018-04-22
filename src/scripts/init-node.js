@@ -36,6 +36,8 @@ function init() {
 
   addEslintConfig();
 
+  addPrettierConfig();
+
   addScripts();
 
   addLicenseFile();
@@ -71,6 +73,25 @@ function addEslintConfig() {
   };
 
   writePackageInfo(packageInfo);
+}
+
+function addPrettierConfig() {
+  const rcFile = '.prettierrc.js';
+  const templatePath = path.join(__dirname, '../templates', 'prettierrc.js');
+
+  try {
+    fs.readFileSync(rcFile);
+  } catch (e) {
+    let template = fs.readFileSync(templatePath, 'utf8');
+    const prettierConfigPath = path.join(
+      ownInfo.name,
+      'src/configs/prettier.js'
+    );
+
+    template = template.replace('%path%', prettierConfigPath);
+
+    fs.writeFileSync(rcFile, template);
+  }
 }
 
 function addScripts() {
