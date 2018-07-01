@@ -8,4 +8,4 @@ function updateNpmIgnore() {
   updateConfigFile('.npmignore', path.join(__dirname, 'tpl.npmignore'));
 }
 
-exports.updateNpmIgnore = updateNpmIgnore;
+module.exports = updateNpmIgnore;

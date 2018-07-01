@@ -10,7 +10,11 @@ function getPackageInfo() {
 }
 
 function updatePackageInfo(updater) {
-  writePackageInfo(updater(getPackageInfo()));
+  const updated = updater(getPackageInfo());
+
+  if (updated) {
+    writePackageInfo(updated);
+  }
 }
 
 function writePackageInfo(data) {

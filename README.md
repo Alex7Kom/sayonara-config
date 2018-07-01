@@ -4,8 +4,8 @@
 
 Currently this toolkit includes:
 
-* Project initialization
-* Linting via ESLint
+* Project initialization (`npm init`, `git init`, `.editorconfig`, etc.)
+* Linting via ESLint+Prettier
 * Auto formatting via Prettier
 
 ## Installation
@@ -16,13 +16,28 @@ Install it globally:
 npm install -g @alex7kom/sayonara-config
 ```
 
-Then run in the project directory:
+## Usage
+
+**Sayonara, config** has multiple sets of configuration suitable for different types of project.
+
+* `node-app` - Node.js app
+* `node-library` - Node.js library
+* `npm-package` - prepare project for publish on NPM
+
+Multiple sets are allowed.
+
+Just run in the project directory:
 
 ```
-sayonara-config init-node
+sayonara-config node-library npm-package
 ```
 
 It will install all the needed dependencies and project boilerplate.
+It will also remember installed sets so the next time you upgrade **Sayonara, config** you'll just need to run:
+
+```
+sayonara-config
+```
 
 ## Usage
 

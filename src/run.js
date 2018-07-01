@@ -2,4 +2,8 @@
 
 'use strict';
 
-require('./scripts/' + process.argv[2]);
+try {
+  require('./scripts/' + process.argv[2]);
+} catch (error) {
+  require('./scripts/config');
+}

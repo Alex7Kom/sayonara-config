@@ -13,4 +13,4 @@ function addReadmeFile() {
   addFileFromTemplate(readmePath, templatePath, packageInfo);
 }
 
-exports.addReadmeFile = addReadmeFile;
+module.exports = addReadmeFile;

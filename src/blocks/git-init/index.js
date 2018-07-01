@@ -6,4 +6,4 @@ function gitInit() {
   runCommand('git', ['init']);
 }
 
-exports.gitInit = gitInit;
+module.exports = gitInit;

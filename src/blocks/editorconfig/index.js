@@ -8,4 +8,4 @@ function updateEditorConfig() {
   updateConfigFile('.editorconfig', path.join(__dirname, 'tpl.editorconfig'));
 }
 
-exports.updateEditorConfig = updateEditorConfig;
+module.exports = updateEditorConfig;

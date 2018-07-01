@@ -10,7 +10,7 @@ const {
 const { getOwnInfo } = require('../../helpers/own-info');
 const { runNpm } = require('../../helpers/run-npm');
 
-function addEslintConfig() {
+function addEslintConfig(env) {
   const ownInfo = getOwnInfo();
 
   updatePackageInfo(packageInfo => {
@@ -21,7 +21,7 @@ function addEslintConfig() {
     const eslintConfigPath = path.join(
       'node_modules',
       ownInfo.name,
-      'src/configs/eslint-node.js'
+      `src/configs/eslint-${env}.js`
     );
     packageInfo.eslintConfig = {
       extends: './' + eslintConfigPath
@@ -84,14 +84,14 @@ function installHusky() {
   runNpm('install', '--save-dev', 'husky');
 }
 
-function addEslintPrettier() {
+function addEslintPrettier(opts) {
   installHusky();
 
-  addEslintConfig();
+  addEslintConfig(opts.env);
 
   addPrettierConfig();
 
   addScripts();
 }
 
-exports.addEslintPrettier = addEslintPrettier;
+module.exports = addEslintPrettier;

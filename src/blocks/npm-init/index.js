@@ -15,4 +15,4 @@ function npmInit() {
   }
 }
 
-exports.npmInit = npmInit;
+module.exports = npmInit;

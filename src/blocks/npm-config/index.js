@@ -17,4 +17,4 @@ function addNPMConfig() {
   addFileFromTemplate(rcFile, templatePath);
 }
 
-exports.addNPMConfig = addNPMConfig;
+module.exports = addNPMConfig;

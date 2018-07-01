@@ -8,4 +8,4 @@ function updateGitIgnore() {
   updateConfigFile('.gitignore', path.join(__dirname, 'tpl.gitignore'));
 }
 
-exports.updateGitIgnore = updateGitIgnore;
+module.exports = updateGitIgnore;

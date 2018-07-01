@@ -21,4 +21,4 @@ function addLicenseFile() {
   });
 }
 
-exports.addLicenseFile = addLicenseFile;
+module.exports = addLicenseFile;

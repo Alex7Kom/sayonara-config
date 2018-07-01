@@ -8,6 +8,10 @@ function installMe() {
   const packageInfo = getPackageInfo();
   const ownInfo = getOwnInfo();
 
+  if (packageInfo.name === ownInfo.name) {
+    return;
+  }
+
   if (
     packageInfo.devDependencies &&
     packageInfo.devDependencies[ownInfo.name]
@@ -18,4 +22,4 @@ function installMe() {
   runNpm('install', '--save-dev', '--save-exact', ownInfo.name);
 }
 
-exports.installMe = installMe;
+module.exports = installMe;
