@@ -4,7 +4,12 @@ const path = require('path');
 
 const CLIEngine = require('eslint').CLIEngine;
 
-const eslintConfig = require('../configs/eslint-node');
+const { getPackageInfo } = require('../helpers/package-json');
+
+const eslintConfig = require(path.join(
+  process.cwd(),
+  getPackageInfo().eslintConfig.extends
+));
 
 const cli = new CLIEngine(eslintConfig);
 

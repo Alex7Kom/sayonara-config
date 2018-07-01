@@ -6,7 +6,7 @@
     "sayonara-config": "src/run.js"
   },
   "scripts": {
-    "lint": "node src/run lint-node",
+    "lint": "node src/run lint",
     "pretty": "node src/run pretty",
     "precommit": "node src/run pretty --staged"
   },

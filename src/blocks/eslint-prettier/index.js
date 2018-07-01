@@ -50,7 +50,7 @@ function addScripts() {
   const binName = Object.keys(ownInfo.bin)[0];
 
   const npmScriptCommands = {
-    lint: binName + ' lint-node',
+    lint: binName + ' lint',
     pretty: binName + ' pretty',
     precommit: binName + ' pretty --staged'
   };
@@ -60,11 +60,15 @@ function addScripts() {
       packageInfo.scripts = {};
     }
 
-    Object.keys(npmScriptCommands).forEach(key => {
-      if (!packageInfo.scripts[key]) {
-        packageInfo.scripts[key] = npmScriptCommands[key];
-      }
-    });
+    if (packageInfo.scripts.lint === binName + ' lint-node') {
+      delete packageInfo.scripts.lint;
+    }
+
+    packageInfo.scripts = Object.assign(
+      {},
+      npmScriptCommands,
+      packageInfo.scripts
+    );
 
     return packageInfo;
   });
