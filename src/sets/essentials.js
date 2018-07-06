@@ -7,5 +7,6 @@ module.exports = [
   'install-me',
   'readme',
   'git-init',
+  'jest',
   ['create-dir', 'src']
 ];
