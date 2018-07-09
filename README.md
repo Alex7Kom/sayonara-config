@@ -7,6 +7,7 @@ Currently this toolkit includes:
 * Project initialization (`npm init`, `git init`, `.editorconfig`, etc.)
 * Linting via ESLint+Prettier
 * Auto formatting via Prettier
+* Jest as a test runner
 
 ## Installation
 
@@ -45,6 +46,7 @@ Commands exposed via NPM scripts:
 
 * `lint` - lint *.js files in `/src` directory
 * `pretty` - pretty *.js files in `/src`
+* `test` - run Jest on *.test.js files in `/src`
 
 ## License
 
