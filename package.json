@@ -14,13 +14,13 @@
   "author": "Alexey Komarov <alex7kom@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "eslint": "^4.19.0",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.6.2",
     "glob": "^7.1.2",
     "jest-cli": "^23.3.0",
     "lodash": "^4.17.10",
-    "prettier": "^1.11.1"
+    "prettier": "^1.13.7"
   },
   "eslintConfig": {
     "extends": "./src/configs/eslint-node.js"
