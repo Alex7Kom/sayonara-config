@@ -11,6 +11,14 @@ function createDir(dir) {
   }
 }
 
+function removeFile(file) {
+  try {
+    fs.unlinkSync(file);
+  } catch (e) {
+    // ignore error
+  }
+}
+
 function addFileFromTemplate(filePath, templatePath, variables = {}) {
   try {
     fs.readFileSync(filePath);
@@ -49,5 +57,6 @@ function updateConfigFile(filePath, templatePath) {
 }
 
 exports.createDir = createDir;
+exports.removeFile = removeFile;
 exports.addFileFromTemplate = addFileFromTemplate;
 exports.updateConfigFile = updateConfigFile;
