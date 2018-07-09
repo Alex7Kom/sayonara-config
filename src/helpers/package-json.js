@@ -1,9 +1,8 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 
-const packageInfoPath = path.join(process.cwd(), 'package.json');
+const packageInfoPath = 'package.json';
 
 function getPackageInfo() {
   return JSON.parse(fs.readFileSync(packageInfoPath, 'utf8'));

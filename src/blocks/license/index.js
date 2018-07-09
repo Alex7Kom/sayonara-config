@@ -12,7 +12,7 @@ function addLicenseFile() {
     return;
   }
 
-  const licensePath = path.join(process.cwd(), 'LICENSE');
+  const licensePath = 'LICENSE';
   const templatePath = path.join(__dirname, 'LICENSE.tpl');
 
   addFileFromTemplate(licensePath, templatePath, {

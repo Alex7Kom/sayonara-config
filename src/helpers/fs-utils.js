@@ -1,11 +1,10 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 
 function createDir(dir) {
   try {
-    fs.mkdirSync(path.join(process.cwd(), dir));
+    fs.mkdirSync(dir);
   } catch (e) {
     // ignore error
   }
