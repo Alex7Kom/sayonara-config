@@ -6,9 +6,9 @@
     "sayonara-config": "src/run.js"
   },
   "scripts": {
-    "lint": "node src/run lint",
+    "lint": "eslint src/**/*.js",
     "pretty": "pretty-quick",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged && npm run lint"
   },
   "keywords": [],
   "author": "Alexey Komarov <alex7kom@gmail.com>",

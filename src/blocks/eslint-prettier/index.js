@@ -50,9 +50,9 @@ function addScripts() {
   const binName = Object.keys(ownInfo.bin)[0];
 
   const npmScriptCommands = {
-    lint: binName + ' lint',
+    lint: 'eslint src/**/*.js',
     pretty: 'pretty-quick',
-    precommit: 'pretty-quick --staged'
+    precommit: 'pretty-quick --staged && npm run lint'
   };
 
   updatePackageInfo(packageInfo => {
