@@ -51,8 +51,8 @@ function addScripts() {
 
   const npmScriptCommands = {
     lint: binName + ' lint',
-    pretty: binName + ' pretty',
-    precommit: binName + ' pretty --staged'
+    pretty: 'pretty-quick',
+    precommit: 'pretty-quick --staged'
   };
 
   updatePackageInfo(packageInfo => {
@@ -62,6 +62,14 @@ function addScripts() {
 
     if (packageInfo.scripts.lint === binName + ' lint-node') {
       delete packageInfo.scripts.lint;
+    }
+
+    if (packageInfo.scripts.pretty === binName + ' pretty') {
+      delete packageInfo.scripts.pretty;
+    }
+
+    if (packageInfo.scripts.precommit === binName + ' pretty --staged') {
+      delete packageInfo.scripts.precommit;
     }
 
     packageInfo.scripts = Object.assign(
