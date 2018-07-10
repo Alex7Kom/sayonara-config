@@ -17,7 +17,7 @@ function updatePackageInfo(updater) {
 }
 
 function writePackageInfo(data) {
-  fs.writeFileSync(packageInfoPath, JSON.stringify(data, null, 2));
+  fs.writeFileSync(packageInfoPath, JSON.stringify(data, null, 2) + '\n');
 }
 
 module.exports = {
