@@ -14,8 +14,12 @@ function addEslintConfig(env) {
   const ownInfo = getOwnInfo();
 
   updatePackageInfo(packageInfo => {
-    if (packageInfo.eslintConfig) {
+    if (packageInfo.name === ownInfo.name) {
       return;
+    }
+
+    if (!packageInfo.eslintConfig) {
+      packageInfo.eslintConfig = {};
     }
 
     const eslintConfigPath = path.join(
@@ -23,9 +27,8 @@ function addEslintConfig(env) {
       ownInfo.name,
       `src/configs/eslint-${env}.js`
     );
-    packageInfo.eslintConfig = {
-      extends: './' + eslintConfigPath
-    };
+
+    packageInfo.eslintConfig.extends = './' + eslintConfigPath;
 
     return packageInfo;
   });
