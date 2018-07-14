@@ -6,6 +6,7 @@
 
 # ignore test files
 __test__
+__snapshots__
 src/**/*.test.js
 src/**/*.spec.js
 
