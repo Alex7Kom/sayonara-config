@@ -24,7 +24,18 @@
     "pretty-quick": "^1.6.0"
   },
   "eslintConfig": {
-    "extends": "./src/configs/eslint-node.js"
+    "extends": "./src/configs/eslint-node.js",
+    "overrides": [
+      {
+        "files": [
+          "*.test.js",
+          "*.spec.js"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "devDependencies": {
     "husky": "^0.14.3"
