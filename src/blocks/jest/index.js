@@ -14,7 +14,9 @@ function addJest() {
   if (
     packageInfo.scripts &&
     packageInfo.scripts.test &&
-    packageInfo.scripts.test !== 'echo "Error: no test specified" && exit 1'
+    (packageInfo.scripts.test !== 'echo "Error: no test specified" && exit 1' &&
+      packageInfo.scripts.test !== 'sayonara-config test' &&
+      packageInfo.scripts.test !== 'jest')
   ) {
     return;
   }
@@ -48,7 +50,12 @@ function addEslintOverride() {
   const jestOverride = {
     files: ['*.test.js', '*.spec.js'],
     env: {
-      jest: true
+      jest: true,
+      node: true,
+      es6: true
+    },
+    parserOptions: {
+      ecmaVersion: 6
     }
   };
 
@@ -58,8 +65,18 @@ function addEslintOverride() {
     }
 
     if (packageInfo.eslintConfig.overrides) {
-      const hasOverride = packageInfo.eslintConfig.overrides.some(
-        override => override.files.join() === jestOverride.files.join()
+      let hasOverride = false;
+
+      packageInfo.eslintConfig.overrides = packageInfo.eslintConfig.overrides.map(
+        override => {
+          if (override.files.join() === jestOverride.files.join()) {
+            hasOverride = true;
+
+            return jestOverride;
+          }
+
+          return override;
+        }
       );
 
       if (!hasOverride) {
