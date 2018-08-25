@@ -4,10 +4,10 @@
 
 Currently this toolkit includes:
 
-* Project initialization (`npm init`, `git init`, `.editorconfig`, etc.)
-* Linting via ESLint+Prettier
-* Auto formatting via Prettier
-* Jest as a test runner
+- Project initialization (`npm init`, `git init`, `.editorconfig`, etc.)
+- Linting via ESLint+Prettier
+- Auto formatting via Prettier
+- Jest as a test runner
 
 ## Installation
 
@@ -21,9 +21,10 @@ npm install -g @alex7kom/sayonara-config
 
 **Sayonara, config** has multiple sets of configuration suitable for different types of project.
 
-* `node-app` - Node.js app
-* `node-library` - Node.js library
-* `npm-package` - prepare project for publish on NPM
+- `node-app` - Node.js app
+- `node-library` - Node.js library
+- `universal-library` - a library meant to be used on both the client and the server
+- `npm-package` - prepare project for publish on NPM
 
 Multiple sets are allowed.
 
@@ -44,9 +45,9 @@ sayonara-config
 
 Commands exposed via NPM scripts:
 
-* `lint` - lint *.js files in `/src` directory
-* `pretty` - pretty *.js files in `/src`
-* `test` - run Jest on *.test.js files in `/src`
+- `lint` - lint \*.js files in `/src` directory
+- `pretty` - pretty \*.js files in `/src`
+- `test` - run Jest on \*.test.js files in `/src`
 
 ## License
 
