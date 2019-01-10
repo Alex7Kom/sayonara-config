@@ -25,7 +25,10 @@ function addFileFromTemplate(filePath, templatePath, variables = {}) {
     let template = fs.readFileSync(templatePath, 'utf8');
 
     Object.keys(variables).forEach(variable => {
-      template = template.replace(`%${variable}%`, variables[variable]);
+      template = template.replace(
+        new RegExp(`%${variable}%`, 'g'),
+        variables[variable]
+      );
     });
 
     fs.writeFileSync(filePath, template);
