@@ -55,7 +55,7 @@ function addScripts() {
   const npmScriptCommands = {
     lint: 'eslint src/**/*.js',
     pretty: 'pretty-quick',
-    precommit: 'pretty-quick --staged && npm run lint'
+    'pre-commit': 'pretty-quick --staged && npm run lint'
   };
 
   updatePackageInfo(packageInfo => {
@@ -71,7 +71,8 @@ function addScripts() {
       delete packageInfo.scripts.pretty;
     }
 
-    if (packageInfo.scripts.precommit === binName + ' pretty --staged') {
+    // upgrade to husky 1.x
+    if (packageInfo.scripts.precommit) {
       delete packageInfo.scripts.precommit;
     }
 
