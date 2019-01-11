@@ -8,8 +8,12 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "pretty": "pretty-quick",
-    "pre-commit": "pretty-quick --staged && npm run lint",
     "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint"
+    }
   },
   "keywords": [],
   "author": "Alexey Komarov <alex7kom@gmail.com>",

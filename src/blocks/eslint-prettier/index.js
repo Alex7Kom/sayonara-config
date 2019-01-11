@@ -54,7 +54,10 @@ function addScripts() {
 
   const npmScriptCommands = {
     lint: 'eslint src/**/*.js',
-    pretty: 'pretty-quick',
+    pretty: 'pretty-quick'
+  };
+
+  const huskyHooks = {
     'pre-commit': 'pretty-quick --staged && npm run lint'
   };
 
@@ -80,6 +83,18 @@ function addScripts() {
       {},
       npmScriptCommands,
       packageInfo.scripts
+    );
+
+    if (!packageInfo.husky) {
+      packageInfo.husky = {
+        hooks: {}
+      };
+    }
+
+    packageInfo.husky.hooks = Object.assign(
+      {},
+      huskyHooks,
+      packageInfo.husky.hooks
     );
 
     return packageInfo;
