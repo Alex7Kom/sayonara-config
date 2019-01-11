@@ -53,7 +53,7 @@ function addScripts() {
   const binName = Object.keys(ownInfo.bin)[0];
 
   const npmScriptCommands = {
-    lint: 'eslint src/**/*.js',
+    lint: 'eslint "src/**/*.js"',
     pretty: 'pretty-quick'
   };
 
@@ -67,6 +67,10 @@ function addScripts() {
     }
 
     if (packageInfo.scripts.lint === binName + ' lint-node') {
+      delete packageInfo.scripts.lint;
+    }
+
+    if (packageInfo.scripts.lint === 'eslint src/**/*.js') {
       delete packageInfo.scripts.lint;
     }
 

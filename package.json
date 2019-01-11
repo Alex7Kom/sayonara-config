@@ -6,7 +6,7 @@
     "sayonara-config": "src/run.js"
   },
   "scripts": {
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint \"src/**/*.js\"",
     "pretty": "pretty-quick",
     "test": "jest"
   },
