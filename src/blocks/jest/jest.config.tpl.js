@@ -2,5 +2,8 @@
 
 module.exports = {
   rootDir: process.cwd(),
-  roots: ['<rootDir>/src/']
+  roots: ['<rootDir>/src/'],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  }
 };

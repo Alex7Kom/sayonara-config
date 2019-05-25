@@ -48,14 +48,14 @@ function addJestConfig() {
 
 function addEslintOverride() {
   const jestOverride = {
-    files: ['*.test.js', '*.spec.js'],
+    files: ['*.?(test|spec).{j,t}s?(x)'],
     env: {
       jest: true,
       node: true,
       es6: true
     },
     parserOptions: {
-      ecmaVersion: 8
+      ecmaVersion: 2018
     }
   };
 
