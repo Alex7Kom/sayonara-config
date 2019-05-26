@@ -1,7 +1,5 @@
 'use strict';
 
-const { merge } = require('lodash');
-
 const {
   updateJSONConfig,
   writeJSONConfig
@@ -12,7 +10,14 @@ const configPath = 'tsconfig.json';
 function tsConfig(options = {}) {
   try {
     updateJSONConfig(configPath, function(config) {
-      return merge(config, options);
+      return {
+        ...config,
+        ...options,
+        compilerOptions: {
+          ...config.compilerOptions,
+          ...options.compilerOptions
+        }
+      };
     });
   } catch (e) {
     writeJSONConfig(configPath, options);
