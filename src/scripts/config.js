@@ -1,7 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
-
 const {
   getPackageInfo,
   updatePackageInfo
@@ -26,7 +24,7 @@ if (sets.length === 0) {
 let setsToExecute = ['essentials', ...sets];
 
 // dedup
-setsToExecute = _.uniq(setsToExecute);
+setsToExecute = Array.from(new Set(setsToExecute));
 
 console.log('Applying sets: ' + setsToExecute.join(', '));
 
