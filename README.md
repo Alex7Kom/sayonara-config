@@ -8,6 +8,7 @@ Currently this toolkit includes:
 - Linting via ESLint+Prettier
 - Auto formatting via Prettier
 - Jest as a test runner
+- TypeScript support for Node.js apps (for now)
 
 ## Installation
 
@@ -22,6 +23,7 @@ npm install -g @alex7kom/sayonara-config
 **Sayonara, config** has multiple sets of configuration suitable for different types of project.
 
 - `node-app` - Node.js app
+- `node-app-ts` - TypeScript Node.js app
 - `node-library` - Node.js library
 - `universal-library` - a library meant to be used on both the client and the server
 - `npm-package` - prepare project for publish on NPM
@@ -45,9 +47,9 @@ sayonara-config
 
 Commands exposed via NPM scripts:
 
-- `lint` - lint \*.js files in `/src` directory
-- `pretty` - pretty \*.js files in `/src`
-- `test` - run Jest on \*.test.js files in `/src`
+- `lint` - lint \*.js and \*.ts files in `/src` directory
+- `pretty` - pretty \*.js and \*.ts files in `/src`
+- `test` - run Jest on \*.test.js and \*.test.ts files in `/src`
 
 ## License
 
