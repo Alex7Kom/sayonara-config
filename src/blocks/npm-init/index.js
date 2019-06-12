@@ -9,7 +9,7 @@ const {
 function npmInit() {
   try {
     getPackageInfo();
-  } catch (e) {
+  } catch (error) {
     writePackageInfo(require('./package.tpl.json'));
     runNpm('init');
   }

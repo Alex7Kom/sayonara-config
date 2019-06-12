@@ -14,8 +14,8 @@ function updateJSONConfig(configPath, updater) {
   }
 }
 
-function writeJSONConfig(configPath, data) {
-  fs.writeFileSync(configPath, JSON.stringify(data, null, 2) + '\n');
+function writeJSONConfig(configPath, configData) {
+  fs.writeFileSync(configPath, JSON.stringify(configData, null, 2) + '\n');
 }
 
 module.exports = {

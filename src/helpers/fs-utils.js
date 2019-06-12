@@ -5,7 +5,7 @@ const fs = require('fs');
 function createDir(dir) {
   try {
     fs.mkdirSync(dir);
-  } catch (e) {
+  } catch (error) {
     // ignore error
   }
 }
@@ -13,7 +13,7 @@ function createDir(dir) {
 function removeFile(file) {
   try {
     fs.unlinkSync(file);
-  } catch (e) {
+  } catch (error) {
     // ignore error
   }
 }
@@ -21,7 +21,7 @@ function removeFile(file) {
 function addFileFromTemplate(filePath, templatePath, variables = {}) {
   try {
     fs.readFileSync(filePath);
-  } catch (e) {
+  } catch (error) {
     let template = fs.readFileSync(templatePath, 'utf8');
 
     Object.keys(variables).forEach(variable => {
@@ -45,7 +45,7 @@ function updateConfigFile(filePath, templatePath) {
   try {
     file = fs.readFileSync(filePath, 'utf8');
     parts = file.split(delimeter);
-  } catch (e) {
+  } catch (error) {
     parts = [''];
   }
 

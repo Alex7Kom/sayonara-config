@@ -19,7 +19,7 @@ function tsConfig(options = {}) {
         }
       };
     });
-  } catch (e) {
+  } catch (error) {
     writeJSONConfig(configPath, options);
   }
 }

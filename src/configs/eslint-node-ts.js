@@ -2,6 +2,7 @@
 
 const prettierConfig = require('./prettier');
 const baseRules = require('./includes/eslint-base-rules');
+const nodeRules = require('./includes/eslint-node-rules');
 
 module.exports = {
   parser: '@typescript-eslint/parser',
@@ -15,6 +16,8 @@ module.exports = {
   },
   plugins: ['prettier'],
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
@@ -23,6 +26,13 @@ module.exports = {
     {
       'prettier/prettier': ['error', prettierConfig]
     },
-    baseRules
+    baseRules,
+    nodeRules,
+    {
+      '@typescript-eslint/explicit-function-return-type': [
+        'warn',
+        { allowExpressions: true }
+      ]
+    }
   )
 };
