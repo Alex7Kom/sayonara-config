@@ -1,5 +1,7 @@
 'use strict';
 
+const restrictedGlobals = require('confusing-browser-globals');
+
 module.exports = {
   'accessor-pairs': 'error',
   'array-callback-return': 'error',
@@ -12,6 +14,7 @@ module.exports = {
   'guard-for-in': 'error',
   'handle-callback-err': 'error',
   'id-blacklist': ['error', 'cb', 'data', 'err', 'e'],
+  'no-restricted-globals': ['error'].concat(restrictedGlobals),
   'max-depth': 'error',
   'max-params': ['error', 5],
   'max-statements': ['error', 25],
