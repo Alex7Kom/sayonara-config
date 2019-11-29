@@ -12,7 +12,11 @@ module.exports = {
     ecmaVersion: 2018
   },
   plugins: ['prettier'],
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:node/recommended',
+    'plugin:prettier/recommended'
+  ],
   rules: Object.assign(
     {
       'prettier/prettier': ['error', prettierConfig]

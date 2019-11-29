@@ -1,6 +1,9 @@
 {
   "name": "@alex7kom/sayonara-config",
   "version": "0.5.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "description": "Zero config tools",
   "bin": {
     "sayonara-config": "src/run.js"
@@ -26,6 +29,7 @@
     "confusing-browser-globals": "^1.0.9",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
@@ -62,6 +66,14 @@
         },
         "parserOptions": {
           "ecmaVersion": 2018
+        }
+      },
+      {
+        "files": [
+          "*.tpl.js"
+        ],
+        "rules": {
+          "node/no-missing-require": "off"
         }
       }
     ]
