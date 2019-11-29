@@ -14,7 +14,15 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': [
       'error',
-      { allowExpressions: true }
+      {
+        allowExpressions: true
+      }
+    ],
+    'node/no-unsupported-features/es-syntax': [
+      'error',
+      {
+        ignores: ['modules']
+      }
     ]
   }
 };
