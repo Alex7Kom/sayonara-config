@@ -2,7 +2,6 @@
 
 const prettierConfig = require('./prettier');
 const baseRules = require('./includes/eslint-base-rules');
-const nodeRules = require('./includes/eslint-node-rules');
 
 module.exports = {
   env: {
@@ -19,6 +18,8 @@ module.exports = {
       'prettier/prettier': ['error', prettierConfig]
     },
     baseRules,
-    nodeRules
+    {
+      'no-console': 'off'
+    }
   )
 };

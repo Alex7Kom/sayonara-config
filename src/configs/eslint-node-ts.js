@@ -1,38 +1,20 @@
 'use strict';
 
-const prettierConfig = require('./prettier');
-const baseRules = require('./includes/eslint-base-rules');
-const nodeRules = require('./includes/eslint-node-rules');
-
 module.exports = {
   parser: '@typescript-eslint/parser',
-  env: {
-    es6: true,
-    node: true
-  },
   parserOptions: {
-    ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: ['prettier'],
   extends: [
-    'eslint:recommended',
+    './eslint-node.js',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'prettier/@typescript-eslint'
   ],
-  rules: Object.assign(
-    {
-      'prettier/prettier': ['error', prettierConfig]
-    },
-    baseRules,
-    nodeRules,
-    {
-      '@typescript-eslint/explicit-function-return-type': [
-        'warn',
-        { allowExpressions: true }
-      ]
-    }
-  )
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      { allowExpressions: true }
+    ]
+  }
 };
