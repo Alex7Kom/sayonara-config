@@ -43,20 +43,6 @@
     "overrides": [
       {
         "files": [
-          "*.test.js",
-          "*.spec.js"
-        ],
-        "env": {
-          "jest": true,
-          "node": true,
-          "es6": true
-        },
-        "parserOptions": {
-          "ecmaVersion": 8
-        }
-      },
-      {
-        "files": [
           "*.?(test|spec).{j,t}s?(x)"
         ],
         "env": {
