@@ -13,7 +13,6 @@ module.exports = {
   eqeqeq: ['error', 'allow-null'],
   'guard-for-in': 'error',
   'handle-callback-err': 'error',
-  'id-blacklist': ['error', 'cb', 'data', 'err', 'e'],
   'no-restricted-globals': ['error'].concat(restrictedGlobals),
   'no-console': 'error',
   'max-depth': 'error',
