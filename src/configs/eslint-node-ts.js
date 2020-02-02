@@ -1,23 +1,8 @@
 'use strict';
 
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    sourceType: 'module'
-  },
-  extends: [
-    './eslint-node.js',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint'
-  ],
+  extends: ['./eslint-node.js', './eslint-ts.js', './eslint-prettier-ts.js'],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': [
-      'error',
-      {
-        allowExpressions: true
-      }
-    ],
     'node/no-unsupported-features/es-syntax': [
       'error',
       {

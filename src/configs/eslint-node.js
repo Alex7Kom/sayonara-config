@@ -1,8 +1,5 @@
 'use strict';
 
-const prettierConfig = require('./prettier');
-const baseRules = require('./includes/eslint-base-rules');
-
 module.exports = {
   env: {
     es6: true,
@@ -11,19 +8,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: ['prettier'],
   extends: [
-    'eslint:recommended',
+    './eslint-base.js',
     'plugin:node/recommended',
-    'plugin:prettier/recommended'
+    './eslint-prettier.js'
   ],
-  rules: Object.assign(
-    {
-      'prettier/prettier': ['error', prettierConfig]
-    },
-    baseRules,
-    {
-      'no-console': 'off'
-    }
-  )
+  rules: {
+    'no-console': 'off'
+  }
 };
