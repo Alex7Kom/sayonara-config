@@ -7,6 +7,7 @@ const {
   getPackageInfo,
   updatePackageInfo
 } = require('../../helpers/package-json');
+const { getOwnInfo } = require('../../helpers/own-info');
 
 function addJest() {
   const packageInfo = getPackageInfo();
@@ -47,43 +48,46 @@ function addJestConfig() {
 }
 
 function addEslintOverride() {
-  const jestOverride = {
-    files: ['*.?(test|spec).{j,t}s?(x)'],
-    env: {
-      jest: true,
-      node: true,
-      es6: true
-    },
-    parserOptions: {
-      ecmaVersion: 2018
-    }
-  };
+  const ownInfo = getOwnInfo();
+
+  const eslintConfigPath =
+    './' +
+    path.join('node_modules', ownInfo.name, `src/configs/eslint-jest.js`);
 
   updatePackageInfo(packageInfo => {
     if (!packageInfo.eslintConfig) {
       packageInfo.eslintConfig = {};
     }
 
-    if (packageInfo.eslintConfig.overrides) {
-      let hasOverride = false;
+    if (packageInfo.eslintConfig.extends.includes(eslintConfigPath)) {
+      return packageInfo;
+    }
 
-      packageInfo.eslintConfig.overrides = packageInfo.eslintConfig.overrides.map(
-        override => {
-          if (override.files.join() === jestOverride.files.join()) {
-            hasOverride = true;
-
-            return jestOverride;
-          }
-
-          return override;
-        }
-      );
-
-      if (!hasOverride) {
-        packageInfo.eslintConfig.overrides.push(jestOverride);
-      }
+    if (
+      packageInfo.eslintConfig.extends &&
+      typeof packageInfo.eslintConfig.extends === 'string'
+    ) {
+      packageInfo.eslintConfig.extends = [
+        packageInfo.eslintConfig.extends,
+        eslintConfigPath
+      ];
+    } else if (Array.isArray(packageInfo.eslintConfig.extends)) {
+      packageInfo.eslintConfig.extends = [
+        ...packageInfo.eslintConfig.extends,
+        eslintConfigPath
+      ];
     } else {
-      packageInfo.eslintConfig.overrides = [jestOverride];
+      packageInfo.eslintConfig.extends = [eslintConfigPath];
+    }
+
+    if (packageInfo.eslintConfig.overrides) {
+      const jestOverride = {
+        files: ['*.?(test|spec).{j,t}s?(x)']
+      };
+
+      packageInfo.eslintConfig.overrides = packageInfo.eslintConfig.overrides.filter(
+        override => override.files.join() !== jestOverride.files.join()
+      );
     }
 
     return packageInfo;

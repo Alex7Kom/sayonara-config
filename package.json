@@ -40,21 +40,11 @@
     "typescript": "^3.7.2"
   },
   "eslintConfig": {
-    "extends": "./src/configs/eslint-node.js",
+    "extends": [
+      "./src/configs/eslint-node.js",
+      "./src/configs/eslint-jest.js"
+    ],
     "overrides": [
-      {
-        "files": [
-          "*.?(test|spec).{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true,
-          "node": true,
-          "es6": true
-        },
-        "parserOptions": {
-          "ecmaVersion": 2018
-        }
-      },
       {
         "files": [
           "*.tpl.js"
