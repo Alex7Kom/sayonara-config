@@ -11,7 +11,8 @@ module.exports = {
   extends: [
     './eslint-base.js',
     'plugin:node/recommended',
-    './eslint-prettier.js'
+    './eslint-prettier.js',
+    './eslint-jsdoc.js'
   ],
   rules: {
     'no-console': 'off'

@@ -7,5 +7,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 5
   },
-  extends: ['./eslint-base.js', './eslint-prettier.js']
+  extends: ['./eslint-base.js', './eslint-prettier.js', './eslint-jsdoc.js']
 };
