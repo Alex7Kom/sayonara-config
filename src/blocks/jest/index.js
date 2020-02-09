@@ -59,7 +59,10 @@ function addEslintOverride() {
       packageInfo.eslintConfig = {};
     }
 
-    if (packageInfo.eslintConfig.extends.includes(eslintConfigPath)) {
+    if (
+      packageInfo.eslintConfig.extends &&
+      packageInfo.eslintConfig.extends.includes(eslintConfigPath)
+    ) {
       return packageInfo;
     }
 
