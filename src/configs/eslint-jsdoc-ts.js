@@ -3,8 +3,8 @@
 module.exports = {
   extends: ['./eslint-jsdoc.js'],
   rules: {
-    'require-param-type': 'off',
-    'require-returns-type': 'off',
-    'no-types': 'error'
+    'jsdoc/require-param-type': 'off',
+    'jsdoc/require-returns-type': 'off',
+    'jsdoc/no-types': 'error'
   }
 };
