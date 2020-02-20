@@ -7,7 +7,11 @@ const {
   getPackageInfo,
   updatePackageInfo
 } = require('../../helpers/package-json');
-const { getOwnInfo } = require('../../helpers/own-info');
+const {
+  prepareEslintConfig,
+  appendEslintExtend,
+  removeEslintExtend
+} = require('../../helpers/eslint-config');
 
 function addJest() {
   const packageInfo = getPackageInfo();
@@ -48,41 +52,11 @@ function addJestConfig() {
 }
 
 function addEslintOverride() {
-  const ownInfo = getOwnInfo();
-
-  const eslintConfigPath =
-    './' +
-    path.join('node_modules', ownInfo.name, `src/configs/eslint-jest.js`);
+  prepareEslintConfig();
+  removeEslintExtend('jest');
+  appendEslintExtend('jest-overrides');
 
   updatePackageInfo(packageInfo => {
-    if (!packageInfo.eslintConfig) {
-      packageInfo.eslintConfig = {};
-    }
-
-    if (
-      packageInfo.eslintConfig.extends &&
-      packageInfo.eslintConfig.extends.includes(eslintConfigPath)
-    ) {
-      return packageInfo;
-    }
-
-    if (
-      packageInfo.eslintConfig.extends &&
-      typeof packageInfo.eslintConfig.extends === 'string'
-    ) {
-      packageInfo.eslintConfig.extends = [
-        packageInfo.eslintConfig.extends,
-        eslintConfigPath
-      ];
-    } else if (Array.isArray(packageInfo.eslintConfig.extends)) {
-      packageInfo.eslintConfig.extends = [
-        ...packageInfo.eslintConfig.extends,
-        eslintConfigPath
-      ];
-    } else {
-      packageInfo.eslintConfig.extends = [eslintConfigPath];
-    }
-
     if (packageInfo.eslintConfig.overrides) {
       const jestOverride = {
         files: ['*.?(test|spec).{j,t}s?(x)']
