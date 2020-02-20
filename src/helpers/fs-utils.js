@@ -58,7 +58,9 @@ function updateConfigFile(filePath, templatePath) {
   fs.writeFileSync(filePath, parts.join(delimeter));
 }
 
-exports.createDir = createDir;
-exports.removeFile = removeFile;
-exports.addFileFromTemplate = addFileFromTemplate;
-exports.updateConfigFile = updateConfigFile;
+module.exports = {
+  createDir,
+  removeFile,
+  addFileFromTemplate,
+  updateConfigFile
+};
