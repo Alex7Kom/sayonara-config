@@ -9,29 +9,22 @@ const {
 } = require('../../helpers/package-json');
 const { getOwnInfo } = require('../../helpers/own-info');
 const { runNpm } = require('../../helpers/run-npm');
+const {
+  prepareEslintConfig,
+  prependEslintExtend,
+  removeEslintExtend
+} = require('../../helpers/eslint-config');
 
-function addEslintConfig(env) {
-  const ownInfo = getOwnInfo();
+const eslintEnvs = ['base', 'browser', 'node', 'node-ts', 'universal'];
 
-  updatePackageInfo(packageInfo => {
-    if (packageInfo.name === ownInfo.name) {
-      return;
-    }
+function addEslintConfig(envName) {
+  if (!eslintEnvs.includes(envName)) {
+    throw new Error('No such eslint config env: ' + envName);
+  }
 
-    if (!packageInfo.eslintConfig) {
-      packageInfo.eslintConfig = {};
-    }
-
-    const eslintConfigPath = path.join(
-      'node_modules',
-      ownInfo.name,
-      `src/configs/eslint-${env}.js`
-    );
-
-    packageInfo.eslintConfig.extends = './' + eslintConfigPath;
-
-    return packageInfo;
-  });
+  prepareEslintConfig();
+  removeEslintExtend('base');
+  prependEslintExtend(envName);
 }
 
 function addPrettierConfig() {
