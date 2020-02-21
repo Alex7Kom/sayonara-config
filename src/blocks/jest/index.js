@@ -3,46 +3,21 @@
 const path = require('path');
 
 const { addFileFromTemplate } = require('../../helpers/fs-utils');
-const {
-  getPackageInfo,
-  updatePackageInfo
-} = require('../../helpers/package-json');
+const { updatePackageInfo } = require('../../helpers/package-json');
 const {
   prepareEslintConfig,
   appendEslintExtend,
   removeEslintExtend
 } = require('../../helpers/eslint-config');
+const { addNpmScript } = require('../../helpers/npm-scripts');
 
 function addJest() {
-  const packageInfo = getPackageInfo();
-
-  if (
-    packageInfo.scripts &&
-    packageInfo.scripts.test &&
-    packageInfo.scripts.test !== 'echo "Error: no test specified" && exit 1' &&
-    packageInfo.scripts.test !== 'sayonara-config test' &&
-    packageInfo.scripts.test !== 'jest'
-  ) {
-    return;
-  }
-
   addJestConfig();
 
-  addTestCommand();
+  addNpmScript('test:jest', 'jest');
+  addNpmScript('test', 'run-s test:*');
 
   addEslintOverride();
-}
-
-function addTestCommand() {
-  updatePackageInfo(packageInfo => {
-    if (!packageInfo.scripts) {
-      packageInfo.scripts = {};
-    }
-
-    packageInfo.scripts.test = 'jest';
-
-    return packageInfo;
-  });
 }
 
 function addJestConfig() {
