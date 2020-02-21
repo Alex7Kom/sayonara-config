@@ -14,6 +14,7 @@ const {
   prependEslintExtend,
   removeEslintExtend
 } = require('../../helpers/eslint-config');
+const { addNpmScript } = require('../../helpers/npm-scripts');
 
 const eslintEnvs = ['base', 'browser', 'node', 'node-ts', 'universal'];
 
@@ -41,50 +42,17 @@ function addPrettierConfig() {
 }
 
 function addScripts() {
-  const ownInfo = getOwnInfo();
-
-  const binName = Object.keys(ownInfo.bin)[0];
-
-  const npmScriptCommands = {
-    lint: 'eslint "src/**/*.{j,t}s?(x)"',
-    pretty: 'pretty-quick'
-  };
+  addNpmScript('lint', 'eslint "src/**/*.{j,t}s?(x)"');
+  addNpmScript('test:lint', 'npm run lint');
+  addNpmScript('pretty', 'pretty-quick');
 
   const huskyHooks = {
     'pre-commit': 'pretty-quick --staged && npm run lint'
   };
 
   updatePackageInfo(packageInfo => {
-    if (!packageInfo.scripts) {
-      packageInfo.scripts = {};
-    }
-
-    if (packageInfo.scripts.lint === binName + ' lint-node') {
-      delete packageInfo.scripts.lint;
-    }
-
-    if (packageInfo.scripts.lint === 'eslint src/**/*.js') {
-      delete packageInfo.scripts.lint;
-    }
-
-    if (packageInfo.scripts.lint === 'eslint "src/**/*.js"') {
-      delete packageInfo.scripts.lint;
-    }
-
-    if (packageInfo.scripts.pretty === binName + ' pretty') {
-      delete packageInfo.scripts.pretty;
-    }
-
     // upgrade to husky 1.x
-    if (packageInfo.scripts.precommit) {
-      delete packageInfo.scripts.precommit;
-    }
-
-    packageInfo.scripts = Object.assign(
-      {},
-      npmScriptCommands,
-      packageInfo.scripts
-    );
+    delete packageInfo.scripts.precommit;
 
     if (!packageInfo.husky) {
       packageInfo.husky = {
