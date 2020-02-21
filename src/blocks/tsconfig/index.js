@@ -5,9 +5,7 @@ const {
   writeJSONConfig
 } = require('../../helpers/json-config');
 
-const configPath = 'tsconfig.json';
-
-function tsConfig(options = {}) {
+function tsConfig(options = {}, configPath = 'tsconfig.json') {
   try {
     updateJSONConfig(configPath, function(config) {
       return {
