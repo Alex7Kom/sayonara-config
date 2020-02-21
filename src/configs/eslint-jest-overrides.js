@@ -3,11 +3,11 @@
 module.exports = {
   overrides: [
     {
-      files: ['*.?(test|spec).js?(x)'],
+      files: ['*.test.js?(x)'],
       extends: ['./eslint-node.js', './eslint-jest.js']
     },
     {
-      files: ['*.?(test|spec).ts?(x)'],
+      files: ['*.test.ts?(x)'],
       extends: ['./eslint-node-ts.js', './eslint-jest.js']
     },
     {
