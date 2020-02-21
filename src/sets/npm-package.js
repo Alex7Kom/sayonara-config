@@ -1,3 +1,9 @@
 'use strict';
 
-module.exports = ['license', 'npmignore', 'npm-config', 'remove-package-lock'];
+module.exports = [
+  'license',
+  'npmignore',
+  'npm-config',
+  'remove-package-lock',
+  'npm-prepublish'
+];
