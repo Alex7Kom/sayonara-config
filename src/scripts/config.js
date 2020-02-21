@@ -34,7 +34,8 @@ setsToExecute.forEach(set => {
     if (typeof block === 'string') {
       require('../blocks/' + block)();
     } else {
-      require('../blocks/' + block[0])(block[1]);
+      const [blockName, ...blockOptions] = block;
+      require('../blocks/' + blockName)(...blockOptions);
     }
   });
 });
