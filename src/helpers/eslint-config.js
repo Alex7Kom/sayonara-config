@@ -20,6 +20,10 @@ function prepareEslintConfig() {
       packageInfo.eslintConfig = {};
     }
 
+    if (!packageInfo.eslintIgnore) {
+      packageInfo.eslintIgnore = [];
+    }
+
     if (!packageInfo.eslintConfig.extends) {
       packageInfo.eslintConfig.extends = [];
     }
@@ -96,10 +100,34 @@ function replaceEslintExtend(envNameSearch, envNameReplace) {
   });
 }
 
+function addEslintIgnore(pattern) {
+  updatePackageInfo(packageInfo => {
+    if (packageInfo.eslintIgnore.includes(pattern)) {
+      return packageInfo;
+    }
+
+    packageInfo.eslintIgnore = [...packageInfo.eslintIgnore, pattern];
+
+    return packageInfo;
+  });
+}
+
+function removeEslintIgnore(pattern) {
+  updatePackageInfo(packageInfo => {
+    packageInfo.eslintIgnore = packageInfo.eslintIgnore.filter(
+      item => item !== pattern
+    );
+
+    return packageInfo;
+  });
+}
+
 module.exports = {
   prepareEslintConfig,
   prependEslintExtend,
   appendEslintExtend,
   removeEslintExtend,
-  replaceEslintExtend
+  replaceEslintExtend,
+  addEslintIgnore,
+  removeEslintIgnore
 };
