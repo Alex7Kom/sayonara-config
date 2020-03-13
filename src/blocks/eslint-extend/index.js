@@ -6,7 +6,7 @@ const {
   appendEslintExtend
 } = require('../../helpers/eslint-config');
 
-module.extends = function(configName, action = 'append') {
+module.exports = function(configName, action = 'append') {
   prepareEslintConfig();
 
   switch (action) {
