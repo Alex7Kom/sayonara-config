@@ -41,7 +41,7 @@ module.exports = [
   [
     'eslint-prettier',
     {
-      env: 'ts'
+      env: 'browser-ts'
     }
   ],
   'build',

@@ -17,7 +17,14 @@ const {
 } = require('../../helpers/eslint-config');
 const { addNpmScript } = require('../../helpers/npm-scripts');
 
-const eslintEnvs = ['base', 'browser', 'node', 'node-ts', 'universal'];
+const eslintEnvs = [
+  'base',
+  'browser',
+  'browser-ts',
+  'node',
+  'node-ts',
+  'universal'
+];
 
 function addEslintConfig(envName) {
   if (!eslintEnvs.includes(envName)) {
