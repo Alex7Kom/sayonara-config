@@ -4,6 +4,7 @@ const { updatePackageInfo } = require('./package-json');
 const { getOwnInfo } = require('./own-info');
 
 const {
+  createConfigPath,
   prepareEslintConfig,
   prependEslintExtend,
   appendEslintExtend,
@@ -21,6 +22,14 @@ getOwnInfo.mockImplementation(() => ({ name: 'fake' }));
 beforeEach(() => jest.clearAllMocks());
 
 describe('eslintConfigUtils', () => {
+  describe('createConfigPath', () => {
+    it('returns config path relative to the module', () => {
+      expect(createConfigPath('test')).toStrictEqual(
+        './node_modules/fake/src/configs/eslint-test.js'
+      );
+    });
+  });
+
   describe('prepareEslintConfig', () => {
     it('creates config if there is none', () => {
       updatePackageInfo.mockImplementation(cb => cb({}));
@@ -72,10 +81,7 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: [
-            './node_modules/fake/src/configs/eslint-test.js',
-            './extend.js'
-          ]
+          extends: ['test', './extend.js']
         }
       });
     });
@@ -84,10 +90,7 @@ describe('eslintConfigUtils', () => {
       updatePackageInfo.mockImplementation(cb =>
         cb({
           eslintConfig: {
-            extends: [
-              './node_modules/fake/src/configs/eslint-test.js',
-              './extend.js'
-            ]
+            extends: ['test', './extend.js']
           }
         })
       );
@@ -96,10 +99,7 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: [
-            './node_modules/fake/src/configs/eslint-test.js',
-            './extend.js'
-          ]
+          extends: ['test', './extend.js']
         }
       });
     });
@@ -119,10 +119,7 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: [
-            './extend.js',
-            './node_modules/fake/src/configs/eslint-test.js'
-          ]
+          extends: ['./extend.js', 'test']
         }
       });
     });
@@ -131,10 +128,7 @@ describe('eslintConfigUtils', () => {
       updatePackageInfo.mockImplementation(cb =>
         cb({
           eslintConfig: {
-            extends: [
-              './extend.js',
-              './node_modules/fake/src/configs/eslint-test.js'
-            ]
+            extends: ['./extend.js', 'test']
           }
         })
       );
@@ -143,10 +137,7 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: [
-            './extend.js',
-            './node_modules/fake/src/configs/eslint-test.js'
-          ]
+          extends: ['./extend.js', 'test']
         }
       });
     });
@@ -157,10 +148,7 @@ describe('eslintConfigUtils', () => {
       updatePackageInfo.mockImplementation(cb =>
         cb({
           eslintConfig: {
-            extends: [
-              './extend.js',
-              './node_modules/fake/src/configs/eslint-test.js'
-            ]
+            extends: ['./extend.js', 'test']
           }
         })
       );
@@ -180,11 +168,7 @@ describe('eslintConfigUtils', () => {
       updatePackageInfo.mockImplementation(cb =>
         cb({
           eslintConfig: {
-            extends: [
-              './extend.js',
-              './node_modules/fake/src/configs/eslint-test.js',
-              './extend2.js'
-            ]
+            extends: ['./extend.js', 'test', './extend2.js']
           }
         })
       );
@@ -193,11 +177,7 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: [
-            './extend.js',
-            './node_modules/fake/src/configs/eslint-check.js',
-            './extend2.js'
-          ]
+          extends: ['./extend.js', 'check', './extend2.js']
         }
       });
     });

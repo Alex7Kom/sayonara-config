@@ -44,14 +44,14 @@ function prepareEslintConfig() {
   });
 }
 
-function prependEslintExtend(envName) {
+function prependEslintExtend(configName) {
   updatePackageInfo(packageInfo => {
-    if (packageInfo.eslintConfig.extends.includes(createConfigPath(envName))) {
+    if (packageInfo.eslintConfig.extends.includes(configName)) {
       return packageInfo;
     }
 
     packageInfo.eslintConfig.extends = [
-      createConfigPath(envName),
+      configName,
       ...packageInfo.eslintConfig.extends
     ];
 
@@ -59,37 +59,37 @@ function prependEslintExtend(envName) {
   });
 }
 
-function appendEslintExtend(envName) {
+function appendEslintExtend(configName) {
   updatePackageInfo(packageInfo => {
-    if (packageInfo.eslintConfig.extends.includes(createConfigPath(envName))) {
+    if (packageInfo.eslintConfig.extends.includes(configName)) {
       return packageInfo;
     }
 
     packageInfo.eslintConfig.extends = [
       ...packageInfo.eslintConfig.extends,
-      createConfigPath(envName)
+      configName
     ];
 
     return packageInfo;
   });
 }
 
-function removeEslintExtend(envName) {
+function removeEslintExtend(configName) {
   updatePackageInfo(packageInfo => {
     packageInfo.eslintConfig.extends = packageInfo.eslintConfig.extends.filter(
-      name => name !== createConfigPath(envName)
+      name => name !== configName
     );
 
     return packageInfo;
   });
 }
 
-function replaceEslintExtend(envNameSearch, envNameReplace) {
+function replaceEslintExtend(configNameSearch, configNameReplace) {
   updatePackageInfo(packageInfo => {
     packageInfo.eslintConfig.extends = packageInfo.eslintConfig.extends.map(
       name => {
-        if (name === createConfigPath(envNameSearch)) {
-          return createConfigPath(envNameReplace);
+        if (name === configNameSearch) {
+          return configNameReplace;
         }
 
         return name;
@@ -123,6 +123,7 @@ function removeEslintIgnore(pattern) {
 }
 
 module.exports = {
+  createConfigPath,
   prepareEslintConfig,
   prependEslintExtend,
   appendEslintExtend,

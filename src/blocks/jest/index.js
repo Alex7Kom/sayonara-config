@@ -5,6 +5,7 @@ const path = require('path');
 const { addFileFromTemplate } = require('../../helpers/fs-utils');
 const { updatePackageInfo } = require('../../helpers/package-json');
 const {
+  createConfigPath,
   prepareEslintConfig,
   appendEslintExtend,
   removeEslintExtend
@@ -28,8 +29,8 @@ function addJestConfig() {
 
 function addEslintOverride() {
   prepareEslintConfig();
-  removeEslintExtend('jest');
-  appendEslintExtend('jest-overrides');
+  removeEslintExtend(createConfigPath('jest'));
+  appendEslintExtend(createConfigPath('jest-overrides'));
 
   updatePackageInfo(packageInfo => {
     if (packageInfo.eslintConfig.overrides) {

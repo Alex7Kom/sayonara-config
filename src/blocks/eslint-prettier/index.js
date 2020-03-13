@@ -10,6 +10,7 @@ const {
 const { getOwnInfo } = require('../../helpers/own-info');
 const { runNpm } = require('../../helpers/run-npm');
 const {
+  createConfigPath,
   prepareEslintConfig,
   prependEslintExtend,
   removeEslintExtend
@@ -24,8 +25,8 @@ function addEslintConfig(envName) {
   }
 
   prepareEslintConfig();
-  removeEslintExtend('base');
-  prependEslintExtend(envName);
+  removeEslintExtend(createConfigPath('base'));
+  prependEslintExtend(createConfigPath(envName));
 }
 
 function addPrettierConfig() {
