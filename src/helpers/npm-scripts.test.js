@@ -20,6 +20,18 @@ describe('addNpmScript', () => {
       },
     });
   });
+
+  it('expects that scripts object does not exist', () => {
+    updatePackageInfo.mockImplementation((cb) => cb({}));
+
+    addNpmScript('test', 'jest');
+
+    expect(updatePackageInfo.mock.results[0].value).toEqual({
+      scripts: {
+        test: 'jest',
+      },
+    });
+  });
 });
 
 describe('removeNpmScript', () => {
@@ -27,6 +39,16 @@ describe('removeNpmScript', () => {
     updatePackageInfo.mockImplementation((cb) =>
       cb({ scripts: { test: 'jest' } })
     );
+
+    removeNpmScript('test');
+
+    expect(updatePackageInfo.mock.results[0].value).toEqual({
+      scripts: {},
+    });
+  });
+
+  it('expects that scripts object does not exist', () => {
+    updatePackageInfo.mockImplementation((cb) => cb({}));
 
     removeNpmScript('test');
 
