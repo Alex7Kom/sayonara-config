@@ -85,7 +85,7 @@ function installHusky() {
     return;
   }
 
-  runNpm('install', '--save-dev', 'husky');
+  runNpm('install', '--save-dev', '--save-exact', 'husky@3.1.0');
 }
 
 function addEslintPrettier(opts) {
