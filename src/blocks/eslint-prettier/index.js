@@ -52,7 +52,7 @@ function addPrettierConfig() {
 function addScripts() {
   addNpmScript('lint', 'eslint "src/**/*.{j,t}s?(x)"');
   addNpmScript('test:lint', 'npm run lint');
-  addNpmScript('pretty', 'pretty-quick');
+  addNpmScript('pretty', 'prettier --write "src/**/*.{j,t}s?(x)"');
 
   const huskyHooks = {
     'pre-commit': 'pretty-quick --staged && npm run lint',

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint \"src/**/*.{j,t}s?(x)\"",
-    "pretty": "pretty-quick",
+    "pretty": "prettier --write \"src/**/*.{j,t}s?(x)\"",
     "test": "jest"
   },
   "husky": {
