@@ -2,6 +2,6 @@
 
 const { addNpmScript } = require('../../helpers/npm-scripts');
 
-module.exports = function() {
+module.exports = function () {
   addNpmScript('prepublishOnly', 'run-s build:*');
 };

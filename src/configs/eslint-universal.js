@@ -2,10 +2,10 @@
 
 module.exports = {
   env: {
-    commonjs: true
+    commonjs: true,
   },
   parserOptions: {
-    ecmaVersion: 5
+    ecmaVersion: 5,
   },
-  extends: ['./eslint-base.js', './eslint-prettier.js', './eslint-jsdoc.js']
+  extends: ['./eslint-base.js', './eslint-prettier.js', './eslint-jsdoc.js'],
 };

@@ -15,7 +15,7 @@ function createConfigPath(envName) {
 }
 
 function prepareEslintConfig() {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     if (!packageInfo.eslintConfig) {
       packageInfo.eslintConfig = {};
     }
@@ -45,14 +45,14 @@ function prepareEslintConfig() {
 }
 
 function prependEslintExtend(configName) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     if (packageInfo.eslintConfig.extends.includes(configName)) {
       return packageInfo;
     }
 
     packageInfo.eslintConfig.extends = [
       configName,
-      ...packageInfo.eslintConfig.extends
+      ...packageInfo.eslintConfig.extends,
     ];
 
     return packageInfo;
@@ -60,14 +60,14 @@ function prependEslintExtend(configName) {
 }
 
 function appendEslintExtend(configName) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     if (packageInfo.eslintConfig.extends.includes(configName)) {
       return packageInfo;
     }
 
     packageInfo.eslintConfig.extends = [
       ...packageInfo.eslintConfig.extends,
-      configName
+      configName,
     ];
 
     return packageInfo;
@@ -75,9 +75,9 @@ function appendEslintExtend(configName) {
 }
 
 function removeEslintExtend(configName) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     packageInfo.eslintConfig.extends = packageInfo.eslintConfig.extends.filter(
-      name => name !== configName
+      (name) => name !== configName
     );
 
     return packageInfo;
@@ -85,9 +85,9 @@ function removeEslintExtend(configName) {
 }
 
 function replaceEslintExtend(configNameSearch, configNameReplace) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     packageInfo.eslintConfig.extends = packageInfo.eslintConfig.extends.map(
-      name => {
+      (name) => {
         if (name === configNameSearch) {
           return configNameReplace;
         }
@@ -101,7 +101,7 @@ function replaceEslintExtend(configNameSearch, configNameReplace) {
 }
 
 function addEslintIgnore(pattern) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     if (packageInfo.eslintIgnore.includes(pattern)) {
       return packageInfo;
     }
@@ -113,9 +113,9 @@ function addEslintIgnore(pattern) {
 }
 
 function removeEslintIgnore(pattern) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     packageInfo.eslintIgnore = packageInfo.eslintIgnore.filter(
-      item => item !== pattern
+      (item) => item !== pattern
     );
 
     return packageInfo;
@@ -130,5 +130,5 @@ module.exports = {
   removeEslintExtend,
   replaceEslintExtend,
   addEslintIgnore,
-  removeEslintIgnore
+  removeEslintIgnore,
 };

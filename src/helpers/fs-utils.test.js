@@ -20,7 +20,7 @@ describe('fsUtils', () => {
     });
 
     it('writes file if it does not exist', () => {
-      fs.readFileSync.mockImplementation(filePath => {
+      fs.readFileSync.mockImplementation((filePath) => {
         if (filePath === 'foo') throw new Error('does not exist');
         if (filePath === 'template') return 'contents';
       });
@@ -34,7 +34,7 @@ describe('fsUtils', () => {
 
   describe('updateConfigFile', () => {
     it('adds file by template if it does not exist', () => {
-      fs.readFileSync.mockImplementation(filePath => {
+      fs.readFileSync.mockImplementation((filePath) => {
         if (filePath === 'foo') throw new Error('does not exist');
         if (filePath === 'template') return 'foo=bar';
       });
@@ -44,12 +44,12 @@ describe('fsUtils', () => {
 
       expect(fs.writeFileSync.mock.calls[0]).toEqual([
         'foo',
-        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\n'
+        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\n',
       ]);
     });
 
     it('upgrades file to template if it does exist', () => {
-      fs.readFileSync.mockImplementation(filePath => {
+      fs.readFileSync.mockImplementation((filePath) => {
         if (filePath === 'foo') return 'config=exists';
         if (filePath === 'template') return 'foo=bar';
       });
@@ -59,12 +59,12 @@ describe('fsUtils', () => {
 
       expect(fs.writeFileSync.mock.calls[0]).toEqual([
         'foo',
-        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\nconfig=exists'
+        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\nconfig=exists',
       ]);
     });
 
     it('updates file by template', () => {
-      fs.readFileSync.mockImplementation(filePath => {
+      fs.readFileSync.mockImplementation((filePath) => {
         if (filePath === 'foo') {
           return 'old=config\n## DO NOT EDIT ABOVE THIS LINE ##\nconfig=exists';
         }
@@ -77,7 +77,7 @@ describe('fsUtils', () => {
 
       expect(fs.writeFileSync.mock.calls[0]).toEqual([
         'foo',
-        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\nconfig=exists'
+        'foo=bar\n## DO NOT EDIT ABOVE THIS LINE ##\nconfig=exists',
       ]);
     });
   });

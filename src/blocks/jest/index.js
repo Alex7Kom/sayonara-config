@@ -8,7 +8,7 @@ const {
   createConfigPath,
   prepareEslintConfig,
   appendEslintExtend,
-  removeEslintExtend
+  removeEslintExtend,
 } = require('../../helpers/eslint-config');
 const { addNpmScript } = require('../../helpers/npm-scripts');
 
@@ -32,14 +32,14 @@ function addEslintOverride() {
   removeEslintExtend(createConfigPath('jest'));
   appendEslintExtend(createConfigPath('jest-overrides'));
 
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     if (packageInfo.eslintConfig.overrides) {
       const jestOverride = {
-        files: ['*.?(test|spec).{j,t}s?(x)']
+        files: ['*.?(test|spec).{j,t}s?(x)'],
       };
 
       packageInfo.eslintConfig.overrides = packageInfo.eslintConfig.overrides.filter(
-        override => override.files.join() !== jestOverride.files.join()
+        (override) => override.files.join() !== jestOverride.files.join()
       );
     }
 

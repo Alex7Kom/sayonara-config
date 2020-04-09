@@ -6,20 +6,20 @@ module.exports = [
     {
       name: 'preact-cli',
       version: 'rc',
-      isDev: true
-    }
+      isDev: true,
+    },
   ],
   [
     'npm-install',
     {
-      name: 'preact'
-    }
+      name: 'preact',
+    },
   ],
   [
     'npm-install',
     {
-      name: 'preact-render-to-string'
-    }
+      name: 'preact-render-to-string',
+    },
   ],
   [
     'tsconfig',
@@ -33,16 +33,16 @@ module.exports = [
         strict: true,
         moduleResolution: 'node',
         allowSyntheticDefaultImports: true,
-        esModuleInterop: true
+        esModuleInterop: true,
       },
-      include: ['src/**/*.tsx', 'src/**/*.ts']
-    }
+      include: ['src/**/*.tsx', 'src/**/*.ts'],
+    },
   ],
   [
     'eslint-prettier',
     {
-      env: 'browser-ts'
-    }
+      env: 'browser-ts',
+    },
   ],
   'build',
   ['npm-scripts', 'build:preact', 'preact build'],
@@ -51,22 +51,22 @@ module.exports = [
     'npm-install',
     {
       name: 'eslint-config-preact',
-      isDev: true
-    }
+      isDev: true,
+    },
   ],
   ['eslint-extend', 'preact', 'prepend'],
   [
     'npm-install',
     {
       name: '@testing-library/preact',
-      isDev: true
-    }
+      isDev: true,
+    },
   ],
   [
     'npm-install',
     {
       name: '@testing-library/jest-dom',
-      isDev: true
-    }
-  ]
+      isDev: true,
+    },
+  ],
 ];

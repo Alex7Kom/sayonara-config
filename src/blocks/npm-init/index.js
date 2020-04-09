@@ -3,7 +3,7 @@
 const { runNpm } = require('../../helpers/run-npm');
 const {
   getPackageInfo,
-  writePackageInfo
+  writePackageInfo,
 } = require('../../helpers/package-json');
 
 function npmInit() {

@@ -11,7 +11,7 @@ const {
   removeEslintExtend,
   replaceEslintExtend,
   addEslintIgnore,
-  removeEslintIgnore
+  removeEslintIgnore,
 } = require('./eslint-config');
 
 jest.mock('./package-json');
@@ -32,26 +32,26 @@ describe('eslintConfigUtils', () => {
 
   describe('prepareEslintConfig', () => {
     it('creates config if there is none', () => {
-      updatePackageInfo.mockImplementation(cb => cb({}));
+      updatePackageInfo.mockImplementation((cb) => cb({}));
 
       prepareEslintConfig();
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
           extends: [],
-          overrides: []
+          overrides: [],
         },
-        eslintIgnore: []
+        eslintIgnore: [],
       });
     });
 
     it('upgrades non-array extends and overrides to arrays', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
             extends: './extend.js',
-            overrides: { files: ['*.ts'], rules: {} }
-          }
+            overrides: { files: ['*.ts'], rules: {} },
+          },
         })
       );
 
@@ -60,20 +60,20 @@ describe('eslintConfigUtils', () => {
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
           extends: ['./extend.js'],
-          overrides: [{ files: ['*.ts'], rules: {} }]
+          overrides: [{ files: ['*.ts'], rules: {} }],
         },
-        eslintIgnore: []
+        eslintIgnore: [],
       });
     });
   });
 
   describe('prependEslintExtend', () => {
     it('prepends the extend by env name if it does not exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['./extend.js']
-          }
+            extends: ['./extend.js'],
+          },
         })
       );
 
@@ -81,17 +81,17 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['test', './extend.js']
-        }
+          extends: ['test', './extend.js'],
+        },
       });
     });
 
     it('does nothing if the extend does exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['test', './extend.js']
-          }
+            extends: ['test', './extend.js'],
+          },
         })
       );
 
@@ -99,19 +99,19 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['test', './extend.js']
-        }
+          extends: ['test', './extend.js'],
+        },
       });
     });
   });
 
   describe('appendEslintExtend', () => {
     it('appends the extend by env name if it does not exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['./extend.js']
-          }
+            extends: ['./extend.js'],
+          },
         })
       );
 
@@ -119,17 +119,17 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['./extend.js', 'test']
-        }
+          extends: ['./extend.js', 'test'],
+        },
       });
     });
 
     it('does nothing if the extend does exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['./extend.js', 'test']
-          }
+            extends: ['./extend.js', 'test'],
+          },
         })
       );
 
@@ -137,19 +137,19 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['./extend.js', 'test']
-        }
+          extends: ['./extend.js', 'test'],
+        },
       });
     });
   });
 
   describe('removeEslintExtend', () => {
     it('removes the extend by env name', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['./extend.js', 'test']
-          }
+            extends: ['./extend.js', 'test'],
+          },
         })
       );
 
@@ -157,19 +157,19 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['./extend.js']
-        }
+          extends: ['./extend.js'],
+        },
       });
     });
   });
 
   describe('replaceEslintExtend', () => {
     it('replaces the extend by env names', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
           eslintConfig: {
-            extends: ['./extend.js', 'test', './extend2.js']
-          }
+            extends: ['./extend.js', 'test', './extend2.js'],
+          },
         })
       );
 
@@ -177,54 +177,54 @@ describe('eslintConfigUtils', () => {
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
         eslintConfig: {
-          extends: ['./extend.js', 'check', './extend2.js']
-        }
+          extends: ['./extend.js', 'check', './extend2.js'],
+        },
       });
     });
   });
 
   describe('addEslintIgnore', () => {
     it('adds pattern to eslintIgnore if it does not exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
-          eslintIgnore: []
+          eslintIgnore: [],
         })
       );
 
       addEslintIgnore('foo');
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
-        eslintIgnore: ['foo']
+        eslintIgnore: ['foo'],
       });
     });
 
     it('does nothing if the pattern does exist', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
-          eslintIgnore: ['foo']
+          eslintIgnore: ['foo'],
         })
       );
 
       addEslintIgnore('foo');
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
-        eslintIgnore: ['foo']
+        eslintIgnore: ['foo'],
       });
     });
   });
 
   describe('removeEslintIgnore', () => {
     it('removes pattern from eslintIgnore', () => {
-      updatePackageInfo.mockImplementation(cb =>
+      updatePackageInfo.mockImplementation((cb) =>
         cb({
-          eslintIgnore: ['foo']
+          eslintIgnore: ['foo'],
         })
       );
 
       removeEslintIgnore('foo');
 
       expect(updatePackageInfo.mock.results[0].value).toEqual({
-        eslintIgnore: []
+        eslintIgnore: [],
       });
     });
   });

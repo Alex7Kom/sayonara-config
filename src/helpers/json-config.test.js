@@ -13,7 +13,7 @@ describe('JSONConfig.updateJSONConfig', () => {
     fs.readFileSync.mockImplementation(() => '{"a":1}');
     fs.writeFileSync.mockImplementation(() => null);
 
-    JSONConfig.updateJSONConfig('foo', x => {
+    JSONConfig.updateJSONConfig('foo', (x) => {
       x.a = 2;
 
       return x;

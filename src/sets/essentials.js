@@ -10,9 +10,9 @@ module.exports = [
   [
     'eslint-prettier',
     {
-      env: 'base'
-    }
+      env: 'base',
+    },
   ],
   'jest',
-  ['create-dir', 'src']
+  ['create-dir', 'src'],
 ];

@@ -2,7 +2,7 @@
 
 const {
   getPackageInfo,
-  updatePackageInfo
+  updatePackageInfo,
 } = require('../helpers/package-json');
 
 // get params
@@ -29,8 +29,8 @@ setsToExecute = Array.from(new Set(setsToExecute));
 console.log('Applying sets: ' + setsToExecute.join(', '));
 
 // execute
-setsToExecute.forEach(set => {
-  require('../sets/' + set).forEach(block => {
+setsToExecute.forEach((set) => {
+  require('../sets/' + set).forEach((block) => {
     if (typeof block === 'string') {
       require('../blocks/' + block)();
     } else {
@@ -41,7 +41,7 @@ setsToExecute.forEach(set => {
 });
 
 // save sets
-updatePackageInfo(packageInfo => {
+updatePackageInfo((packageInfo) => {
   if (!packageInfo.sayonaraConfig) {
     packageInfo.sayonaraConfig = {};
   }

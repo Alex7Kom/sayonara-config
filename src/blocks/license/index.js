@@ -17,7 +17,7 @@ function addLicenseFile() {
 
   addFileFromTemplate(licensePath, templatePath, {
     year: new Date().getFullYear(),
-    author: packageInfo.author
+    author: packageInfo.author,
   });
 }
 

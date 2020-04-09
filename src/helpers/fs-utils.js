@@ -24,7 +24,7 @@ function addFileFromTemplate(filePath, templatePath, variables = {}) {
   } catch (error) {
     let template = fs.readFileSync(templatePath, 'utf8');
 
-    Object.keys(variables).forEach(variable => {
+    Object.keys(variables).forEach((variable) => {
       template = template.replace(
         new RegExp(`%${variable}%`, 'g'),
         variables[variable]
@@ -62,5 +62,5 @@ module.exports = {
   createDir,
   removeFile,
   addFileFromTemplate,
-  updateConfigFile
+  updateConfigFile,
 };

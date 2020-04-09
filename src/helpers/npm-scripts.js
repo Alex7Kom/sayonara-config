@@ -3,7 +3,7 @@
 const { updatePackageInfo } = require('./package-json');
 
 function addNpmScript(name, command) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     packageInfo.scripts[name] = command;
 
     return packageInfo;
@@ -11,7 +11,7 @@ function addNpmScript(name, command) {
 }
 
 function removeNpmScript(name) {
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     delete packageInfo.scripts[name];
 
     return packageInfo;
@@ -20,5 +20,5 @@ function removeNpmScript(name) {
 
 module.exports = {
   addNpmScript,
-  removeNpmScript
+  removeNpmScript,
 };

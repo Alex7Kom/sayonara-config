@@ -4,7 +4,7 @@ module.exports = [
   [
     'eslint-prettier',
     {
-      env: 'browser'
-    }
-  ]
+      env: 'browser',
+    },
+  ],
 ];

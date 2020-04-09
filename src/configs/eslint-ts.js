@@ -3,13 +3,13 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
   },
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off'
-  }
+    '@typescript-eslint/explicit-function-return-type': 'off',
+  },
 };

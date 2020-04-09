@@ -5,7 +5,7 @@ const path = require('path');
 const { addFileFromTemplate } = require('../../helpers/fs-utils');
 const {
   getPackageInfo,
-  updatePackageInfo
+  updatePackageInfo,
 } = require('../../helpers/package-json');
 const { getOwnInfo } = require('../../helpers/own-info');
 const { runNpm } = require('../../helpers/run-npm');
@@ -13,7 +13,7 @@ const {
   createConfigPath,
   prepareEslintConfig,
   prependEslintExtend,
-  removeEslintExtend
+  removeEslintExtend,
 } = require('../../helpers/eslint-config');
 const { addNpmScript } = require('../../helpers/npm-scripts');
 
@@ -23,7 +23,7 @@ const eslintEnvs = [
   'browser-ts',
   'node',
   'node-ts',
-  'universal'
+  'universal',
 ];
 
 function addEslintConfig(envName) {
@@ -45,7 +45,7 @@ function addPrettierConfig() {
   const prettierConfigPath = path.join(ownInfo.name, 'src/configs/prettier.js');
 
   addFileFromTemplate(rcFile, templatePath, {
-    path: prettierConfigPath
+    path: prettierConfigPath,
   });
 }
 
@@ -55,16 +55,16 @@ function addScripts() {
   addNpmScript('pretty', 'pretty-quick');
 
   const huskyHooks = {
-    'pre-commit': 'pretty-quick --staged && npm run lint'
+    'pre-commit': 'pretty-quick --staged && npm run lint',
   };
 
-  updatePackageInfo(packageInfo => {
+  updatePackageInfo((packageInfo) => {
     // upgrade to husky 1.x
     delete packageInfo.scripts.precommit;
 
     if (!packageInfo.husky) {
       packageInfo.husky = {
-        hooks: {}
+        hooks: {},
       };
     }
 

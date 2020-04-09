@@ -10,28 +10,28 @@ beforeEach(() => jest.clearAllMocks());
 
 describe('addNpmScript', () => {
   it('adds script with specified name and command', () => {
-    updatePackageInfo.mockImplementation(cb => cb({ scripts: {} }));
+    updatePackageInfo.mockImplementation((cb) => cb({ scripts: {} }));
 
     addNpmScript('test', 'jest');
 
     expect(updatePackageInfo.mock.results[0].value).toEqual({
       scripts: {
-        test: 'jest'
-      }
+        test: 'jest',
+      },
     });
   });
 });
 
 describe('removeNpmScript', () => {
   it('removes script with specified name', () => {
-    updatePackageInfo.mockImplementation(cb =>
+    updatePackageInfo.mockImplementation((cb) =>
       cb({ scripts: { test: 'jest' } })
     );
 
     removeNpmScript('test');
 
     expect(updatePackageInfo.mock.results[0].value).toEqual({
-      scripts: {}
+      scripts: {},
     });
   });
 });

@@ -6,5 +6,5 @@ module.exports = [
   'npm-config',
   'remove-package-lock',
   'build',
-  'npm-prepublish'
+  'npm-prepublish',
 ];

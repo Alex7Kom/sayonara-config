@@ -21,5 +21,5 @@ function writeJSONConfig(configPath, configData) {
 module.exports = {
   getJSONConfig,
   updateJSONConfig,
-  writeJSONConfig
+  writeJSONConfig,
 };

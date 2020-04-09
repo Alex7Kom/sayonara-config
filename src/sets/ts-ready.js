@@ -7,10 +7,10 @@ module.exports = [
       compilerOptions: {
         allowJs: true,
         checkJs: true,
-        noEmit: true
+        noEmit: true,
       },
-      exclude: ['node_modules', '**/node_modules/*']
-    }
+      exclude: ['node_modules', '**/node_modules/*'],
+    },
   ],
-  'build-dts-script'
+  'build-dts-script',
 ];

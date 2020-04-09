@@ -2,7 +2,7 @@
 
 module.exports = {
   env: {
-    browser: true
+    browser: true,
   },
-  extends: ['./eslint-universal.js']
+  extends: ['./eslint-universal.js'],
 };

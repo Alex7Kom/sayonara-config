@@ -57,8 +57,8 @@ module.exports = {
     'no-plusplus': [
       'error',
       {
-        allowForLoopAfterthoughts: true
-      }
+        allowForLoopAfterthoughts: true,
+      },
     ],
     'no-proto': 'error',
     'no-restricted-syntax': ['error', 'SequenceExpression'],
@@ -80,6 +80,6 @@ module.exports = {
     'no-whitespace-before-property': 'error',
     radix: 'error',
     strict: ['error', 'global'],
-    yoda: ['error', 'never']
-  }
+    yoda: ['error', 'never'],
+  },
 };

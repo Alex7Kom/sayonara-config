@@ -3,10 +3,10 @@
 const {
   prepareEslintConfig,
   prependEslintExtend,
-  appendEslintExtend
+  appendEslintExtend,
 } = require('../../helpers/eslint-config');
 
-module.exports = function(configName, action = 'append') {
+module.exports = function (configName, action = 'append') {
   prepareEslintConfig();
 
   switch (action) {

@@ -4,7 +4,7 @@ const { addNpmScript } = require('../../helpers/npm-scripts');
 const { addEslintIgnore } = require('../../helpers/eslint-config');
 const createTsConfig = require('../tsconfig');
 
-module.exports = function() {
+module.exports = function () {
   createTsConfig(
     {
       extends: './tsconfig',
@@ -12,8 +12,8 @@ module.exports = function() {
       compilerOptions: {
         declaration: true,
         noEmit: false,
-        emitDeclarationOnly: true
-      }
+        emitDeclarationOnly: true,
+      },
     },
     'd.tsconfig.json'
   );
