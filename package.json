@@ -9,7 +9,7 @@
     "sayonara-config": "src/run.js"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*.{j,t}s?(x)\"",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{j,t}s?(x)\"",
     "pretty": "prettier --write \"src/**/*.{j,t}s?(x)\"",
     "test": "run-s test:*",
     "test:lint": "npm run lint",
