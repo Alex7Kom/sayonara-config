@@ -21,6 +21,7 @@ module.exports = [
       name: 'preact-render-to-string',
     },
   ],
+  'ts',
   [
     'tsconfig',
     {
