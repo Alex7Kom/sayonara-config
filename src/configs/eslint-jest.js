@@ -1,15 +1,18 @@
 'use strict';
 
 module.exports = {
-  plugins: ['jest', 'jest-formatting'],
-  extends: [
-    'plugin:jest/recommended',
-    'plugin:jest/style',
-    'plugin:jest-formatting/recommended',
+  overrides: [
+    {
+      files: ['*.test.js?(x)'],
+      extends: ['./eslint-node.js', './eslint-jest-base.js'],
+    },
+    {
+      files: ['*.test.ts?(x)'],
+      extends: ['./eslint-node-ts.js', './eslint-jest-base.js'],
+    },
+    {
+      files: ['jest.config.js'],
+      extends: ['./eslint-node.js'],
+    },
   ],
-  rules: {
-    'node/no-unpublished-import': 'off',
-    'node/no-missing-import': 'off',
-    'node/no-missing-require': 'off',
-  },
 };

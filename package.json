@@ -47,7 +47,7 @@
   "eslintConfig": {
     "extends": [
       "./src/configs/eslint-node.js",
-      "./src/configs/eslint-jest-overrides.js"
+      "./src/configs/eslint-jest.js"
     ],
     "overrides": [
       {

@@ -29,9 +29,10 @@ function addJestConfig() {
 
 function addEslintOverride() {
   prepareEslintConfig();
-  removeEslintExtend(createConfigPath('jest'));
-  appendEslintExtend(createConfigPath('jest-overrides'));
+  appendEslintExtend(createConfigPath('jest'));
 
+  // remove legacy overrides
+  removeEslintExtend(createConfigPath('jest-overrides'));
   updatePackageInfo((packageInfo) => {
     if (packageInfo.eslintConfig.overrides) {
       const jestOverride = {
