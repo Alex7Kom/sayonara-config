@@ -17,6 +17,10 @@ module.exports = {
             ignores: ['modules'],
           },
         ],
+        'node/no-missing-import': [
+          'error',
+          { tryExtensions: ['.ts', '.js', '.json'] },
+        ],
       },
     },
   ],
