@@ -1,6 +1,6 @@
 'use strict';
 
-const prettierConfig = require('./prettier');
+const prettierConfig = require('../prettier');
 
 module.exports = {
   plugins: ['prettier'],

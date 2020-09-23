@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  extends: ['./eslint-jsdoc.js'],
+  extends: ['./jsdoc.js'],
   rules: {
     'jsdoc/require-param-type': 'off',
     'jsdoc/require-returns-type': 'off',

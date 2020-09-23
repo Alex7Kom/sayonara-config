@@ -1,11 +1,10 @@
 'use strict';
 
 module.exports = {
-  env: {
-    commonjs: true,
-  },
-  parserOptions: {
-    ecmaVersion: 5,
-  },
-  extends: ['./eslint-base.js', './eslint-prettier.js', './eslint-jsdoc.js'],
+  overrides: [
+    {
+      files: ['*.js'],
+      extends: ['./eslint/env-universal.js'],
+    },
+  ],
 };

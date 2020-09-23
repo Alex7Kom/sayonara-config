@@ -7,12 +7,6 @@ module.exports = [
   'install-me',
   'readme',
   'git-init',
-  [
-    'eslint-prettier',
-    {
-      env: 'base',
-    },
-  ],
   'jest',
   ['create-dir', 'src'],
 ];

@@ -1,8 +1,10 @@
 'use strict';
 
 module.exports = {
-  env: {
-    browser: true,
-  },
-  extends: ['./eslint-universal.js'],
+  overrides: [
+    {
+      files: ['*.js?(x)'],
+      extends: ['./eslint/env-browser.js'],
+    },
+  ],
 };

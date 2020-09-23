@@ -9,6 +9,7 @@ module.exports = [
         noEmit: true,
         resolveJsonModule: true,
         moduleResolution: 'node',
+        strict: true,
         lib: ['es2017'],
         target: 'esnext',
       },
